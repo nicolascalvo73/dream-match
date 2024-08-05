@@ -1,21 +1,49 @@
 'use client'
-import Field from '@/components/field'
-import PlayerThumbnail from '@/components/playerThumbnail'
-import { useState } from 'react'
-import { useMediaQuery } from 'react-responsive'
+import { useEffect, useState } from 'react'
+import { CSSTransition, TransitionGroup } from 'react-transition-group'
+import StepOne from '../steps/stepOne'
+import StepTwo from '../steps/stepTwo'
+import StepZero from '../steps/stepZero'
+import StepThree from '../steps/stepThree'
+import StepFour from '../steps/stepFour'
+import StepFive from '../steps/stepFive'
 
 const CreateTeams = () => {
-	const isMobile = useMediaQuery({ query: '(max-width: 768px)' })
-	const [step, setStep] = useState(1)
+	const [step, setStep] = useState(-1)
+
+	const nextStep = () => {
+		setStep(step + 1)
+	}
+
+	const prevStep = () => {
+		setStep(step - 1)
+	}
+
+	const goToStep = (stepNumber: number) => {
+		setStep(stepNumber)
+	}
+
+	useEffect(() => {
+		setTimeout(() => {
+			setStep(0)
+		}, 800)
+	}, [])
 
 	return (
-		<>
-			{/* <Field />
-			<PlayerThumbnail
-				imageUrl={'https://apiv3.apifootball.com/badges/players/9898_k-benzema.jpg'}
-				playerName={'K. Benzema'}
-			/> */}
-		</>
+		<div className="relative w-full h-screen overflow-hidden">
+			<TransitionGroup className="absolute inset-0">
+				<CSSTransition key={step} classNames="slide" timeout={500}>
+					<div className="w-full h-full">
+						{step === 0 && <StepZero goToStep={goToStep} prevStep={prevStep} />}
+						{step === 1 && <StepOne goToStep={goToStep} prevStep={prevStep} />}
+						{step === 2 && <StepTwo goToStep={goToStep} prevStep={prevStep} />}
+						{step === 3 && <StepThree goToStep={goToStep} prevStep={prevStep} />}
+						{step === 4 && <StepFour goToStep={goToStep} prevStep={prevStep} />}
+						{step === 5 && <StepFive goToStep={goToStep} prevStep={prevStep} />}
+					</div>
+				</CSSTransition>
+			</TransitionGroup>
+		</div>
 	)
 }
 

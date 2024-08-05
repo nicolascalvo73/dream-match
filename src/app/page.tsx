@@ -1,7 +1,6 @@
 'use client'
 import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 export default function Home() {
@@ -21,7 +20,7 @@ export default function Home() {
 	}, [])
 
 	return (
-		<main className="flex flex-col items-center justify-center w-full min-h-screen bg-whity text-atcgreen font-montserrat">
+		<div className="flex flex-col items-center justify-center w-full min-h-screen bg-whity text-atcgreen font-montserrat">
 			<div className="flex-col items-center justify-center">
 				<div
 					className={`transition-opacity duration-1000 ease-in ${
@@ -44,6 +43,6 @@ export default function Home() {
 					Haz click en la imagen para empezar.
 				</p>
 			</div>
-		</main>
+		</div>
 	)
 }

@@ -8,9 +8,6 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
 	title: 'Challenge ATC - Nicolas Calvo',
 	description: 'Create your Dream Match',
-	icons: {
-		icon: '/icon.png',
-	},
 }
 
 export default function RootLayout({

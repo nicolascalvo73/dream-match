@@ -19,8 +19,16 @@ const config: Config = {
 			fontFamily: {
 				montserrat: ['Montserrat', 'sans-serif'],
 			},
+			scrollbar: {
+				hide: {
+					'::-webkit-scrollbar': {
+						display: 'none',
+					},
+					'scrollbar-width': 'none',
+				},
+			},
 		},
 	},
-	plugins: [],
+	plugins: [require('tailwind-scrollbar')],
 }
 export default config
